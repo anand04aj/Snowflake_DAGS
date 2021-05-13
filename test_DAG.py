@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 args = {"owner": "airflow", "start_date": airflow.utils.dates.days_ago(2)}
 
 dag = DAG(
-    dag_id="snowflake_connector1", default_args=args, schedule_interval='@once'
+    dag_id="snowflake_connector_test", default_args=args, schedule_interval='@once'
 )
 
 
