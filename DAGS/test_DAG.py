@@ -36,7 +36,7 @@ with dag:
         sql=create_insert_query,
         snowflake_conn_id="ocudm",
     )
-    get_count = PythonOperator(task_id="get_count", python_callable=row_count,provide_context=True)
+    #get_count = PythonOperator(task_id="get_count", python_callable=row_count,provide_context=True)
     sleep = BashOperator(task_id='sleep',
                          bash_command='sleep 30')
     print_hello = BashOperator(task_id='print_hello',
