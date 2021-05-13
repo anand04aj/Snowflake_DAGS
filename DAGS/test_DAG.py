@@ -5,6 +5,7 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.contrib.hooks.snowflake_hook import SnowflakeHook
 from airflow.contrib.operators.snowflake_operator import SnowflakeOperator
+from airflow.operators.bash_operator import BashOperator
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -26,5 +27,9 @@ def row_count(**context):
 
 with dag:
     get_count = PythonOperator(task_id="get_count", python_callable=row_count)
+    sleep = BashOperator(task_id='sleep',
+                         bash_command='sleep 60')
+    print_hello = BashOperator(task_id='print_hello',
+                               bash_command='echo "hello"')
 
-get_count
+print_hello >> sleep >> get_count
