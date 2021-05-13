@@ -20,8 +20,9 @@ dag = DAG(
 
 def row_count(**context):
     sleep(120)
-    dwh_hook = SnowflakeHook(snowflake_conn_id="ocudm")
-    result = dwh_hook.get_first("select count(*) from curo_medclaims")
+    #dwh_hook = SnowflakeHook(snowflake_conn_id="ocudm")
+    #result = dwh_hook.get_first("select count(*) from curo_medclaims")
+    print("hello")
     sleep(120)
     logging.info("Number of rows in `curo_medclaims`  - %s", result[0])
 
